@@ -174,6 +174,8 @@ public class Protocol(
             }.checkCancelled().onFailure {
                 logger.error(it) { "Error processing incoming messages" }
             }
+            // Transport closed - fail all pending outgoing requests so callers don't hang.
+            cancelPendingOutgoingRequests(CancellationException("Transport closed"))
         }
         transport.start()
     }
