@@ -137,12 +137,12 @@ suspend fun CoroutineScope.runTerminalClient(transport: Transport) {
         protocol
     )
 
-    logger.info { "Starting Gemini agent process..." }
+    logger.info { "Starting Agent process..." }
 
     // Connect to agent and start transport
     protocol.start()
 
-    logger.info { "Connected to Gemini agent, initializing..." }
+    logger.info { "Connected to Agent, initializing..." }
 
     val agentInfo = client.initialize(
         ClientInfo(
@@ -235,6 +235,6 @@ suspend fun CoroutineScope.runTerminalClient(transport: Transport) {
         println("Error: ${e.message}")
         e.printStackTrace()
     } finally {
-        logger.info { "Gemini ACP client shutting down" }
+        logger.info { "ACP client shutting down" }
     }
 }
